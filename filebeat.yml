@@ -1,0 +1,18 @@
+## simple file input
+# filebeat.inputs:
+# - type: log
+#   paths:
+#     - /tmp/data/*.log
+
+# modules.d/apache.yml
+filebeat.modules:
+  - module: apache
+    access:
+      enabled: true
+      var.paths: ["/tmp/data/*.log"]
+
+output.elasticsearch:
+  hosts: ['elasticsearch:9200']
+
+monitoring.enabled: false
+logging.metrics.enabled: true
